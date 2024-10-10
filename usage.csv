@@ -1,0 +1,18 @@
+#--input file to parametrize the flexibility in the demand
+#--all numbers are integers
+#
+#--usage: name of usage 
+#--uniform: boolean that determines if usage requires a uniform power or not
+#--intermittent: boolean that determines if usage can be intermittent (stopped and restarted) or not
+#--L: length, number of timesteps usage is required, for uniform power usages only
+#--P: power of usage, in kW, for uniform power usages only
+#--E: total energy required for non-uniform usages only, in kW.timestep (ie not multiplied by the duration of the timestep)
+#--Pmax: maximum power of usage for non-uniform usages only, in kW
+#--i1: index of start of time window for usage (i1 included)
+#--i2: index of end of time window for usage (i2 not included)
+usage,   uniform,  intermittent, L,  P,  E,   Pmax,  i1,  i2
+car1,    False,    True,         0,  0,  10,  4,     0,   12
+car2,    True,     True,         10, 5,  0,   0,     0,   18
+wash,    True,     False,        1,  2,  0,   0,     8,   11
+cook,    True,     False,        2,  1,  0,   0,     10,  13
+heater,  False,    True,         0,  0,  4,   2,     20,  24
