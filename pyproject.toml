@@ -1,25 +1,24 @@
 [project]
-name = "PV_self-consumption"
+name = "PV_self-consumption_api_client"
 version = "0.1.0"
-description = "PV_self-consumption"
+description = "PV_self-consumption API client"
 
 dependencies = [
     "pydantic>=2.9.2",
     "pandas>=2.2.3",
     "numpy>=2.1.1",
     "requests>=2.32.3",
-    "matplotlib>=3.9.2"
+    "matplotlib>=3.9.2",
+    "pyyaml>=6.0.2",
 ]
 
 requires-python = ">=3.12"
 readme = "README.md"
-
-[project.optional-dependencies]
-api = [
-"fastapi>=0.115.0",
-"uvicorn>=0.31.0",
-"python-multipart>=0.0.12"
+authors = [
+{name = "Sébastien Gardoll", email = "sebastien@gardoll.fr"},
+{name = "Olivier Boucher", email = "olivier.boucher@ipsl.fr"},
 ]
+license = {text = "CeCILL v2.1"}
 
 [build-system]
 requires = ["pdm-backend"]
