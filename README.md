@@ -7,12 +7,11 @@ Olivier Boucher, CNRS, IPSL
 (c) 2024 
 
 Interface to call API PV_self_consumption_api for optimising self consumption under constraints.
-Note that the license only applies to this interface and not to the api
+Note that the license only applies to this interface and not to the API.
 
 ## Python environment
 
 ### Option 1: Conda
-###----------------
 
 1. Install miniconda;
 2. Create a new conda environment;
@@ -50,7 +49,6 @@ pip install -e .
 ```
 
 ### Option 2: PDM
-###--------------
 
 [PDM](https://pdm-project.org/en/latest/) associates a Python virtual environmnent (venv) with a project described by a pyproject file. 
 
