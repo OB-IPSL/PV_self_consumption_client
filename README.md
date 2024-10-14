@@ -1,4 +1,4 @@
-# PV_self_consumption_api
+# PV_self_consumption_client
 
 Authors: 
 Sébastien Gardoll, CNRS, IPSL
@@ -6,7 +6,7 @@ Olivier Boucher, CNRS, IPSL
 
 (c) 2024 
 
-Interface to call API PV_self_consumption_api for optimising self consumption under constraints.
+Interface to call API PV_self_consumption_client for optimising solar PV self-consumption under constraints.
 Note that the license only applies to this interface and not to the API.
 
 ## Python environment
@@ -44,7 +44,7 @@ First activate the environment (as usual), then install the dependencies with pi
 
 ```bash
 conda activate pvsc
-cd /path/to/PV_self-consumption/
+cd /path/to/PV_self_consumption_client/
 pip install -e .
 ```
 
@@ -57,7 +57,7 @@ pip install -e .
 Setup the project environment with PDM:
 
 ```bash
-cd /path/to/PV_self-consumption/
+cd /path/to/PV_self_consumption_client/
 pdm install
 ```
 
@@ -66,7 +66,7 @@ pdm install
 Activate the associated venv:
 
 ```bash
-cd /path/to/PV_self-consumption/
+cd /path/to/PV_self_consumption_client/
 eval $(pdm venv activate)
 ```
 
