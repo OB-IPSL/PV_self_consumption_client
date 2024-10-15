@@ -3,7 +3,6 @@ import numpy as np
 from numpy.typing import NDArray
 from pydantic import BaseModel, ConfigDict
 from pathlib import Path
-from typing import Any
 from pydantic.functional_validators import field_validator
 import yaml
 import pandas as pd
