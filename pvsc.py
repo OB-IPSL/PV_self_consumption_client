@@ -3,7 +3,7 @@ from pathlib import Path
 import argparse
 import pv_self_consumption_api.client_api as client_api
 import pv_self_consumption_api.utils as utils
-import os
+import sys
 
 PARAMETERS_EXAMPLES = \
 """\
@@ -38,11 +38,10 @@ Beff: 0.8
 B0f: 0.5                   
 #--battery discretisation step (kWh)
 dB: 0.1                    
-
 #
 #--forecast of the production for the next Ntimes times by timestep (kW)
 #-----------------------------------------------------------------------
-supply: [0.,0.,0.,0.,0.,0.,0.,3.,8.,10.,14.,16.,4.,4.,10.,8.,3.,0.,0.,0.,0.,0.,0.,0.]
+supply: [0., 0., 0., 0., 0., 0., 0., 3., 8., 10., 14., 16., 4., 4., 10., 8., 3., 0., 0., 0., 0., 0., 0., 0.]
 """
 
 DEMAND_EXAMPLE =\
@@ -67,7 +66,6 @@ cook,    True,     False,        2,  1,  0,   0,     10,  13
 heater,  False,    True,         0,  0,  4,   2,     20,  24
 """
 
-PLOTS_DIR_PATH = './plots/'
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(prog='pvsc',\
@@ -111,10 +109,11 @@ def main() -> int:
                                                         demand_file_path=Path(args.demand_file_path),
                                                         port=args.port,
                                                         host=args.host)
-            print(result) # TODO: output into csv format.
-            # TODO: impl making plots.
+            print(result.model_dump_json())
+            if args.make_plots:
+                utils.make_plot(parameters=parameters, result=result, demand_file_path=args.demand_file_path)
         except Exception as e:
-            print(f'[ERROR] {str(e)}') # TODO: print to stderr.
+            print(f'[ERROR] {str(e)}', file=sys.stderr)
             return 1
     else:
         if args.parameters:

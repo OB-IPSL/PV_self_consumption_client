@@ -1,5 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
+from pv_self_consumption_api.models import Parameters, Result
+from pathlib import Path
+import pandas as pd
+import os
 
 #--check the compliance of the inputs and parameters
 def check_compliance_inputs(supply,demand,price_sale,price_buy,Emax,Imax,Bmax,ts_in,ts_out,Beff,B0f,dB,Nscen,dt):
@@ -57,8 +61,26 @@ def check_compliance_inputs(supply,demand,price_sale,price_buy,Emax,Imax,Bmax,ts
     #
     return
 
+
+def read_demand(demand_file_path: Path)-> pd.DataFrame:
+    try:
+        demand = pd.read_csv(demand_file_path, skiprows=12, skipinitialspace=True)
+        demand.set_index('usage', inplace=True)
+        return demand
+    except Exception as e:
+        raise Exception(f'unable to read demand file: {str(e)}')
+
+
+def make_plot(parameters: Parameters, result: Result, demand_file_path: Path, plots_dir_path: Path = Path('./plots/')) -> None:
+    make_figure(parameters.price_buy, parameters.price_sale, read_demand(demand_file_path),\
+                result.Cusage, result.P, result.C, result.Enet, parameters.Emax,\
+                parameters.Imax, result.Curt, result.L, result.Bnet, result.Bstates,\
+                len(parameters.supply), plots_dir_path)
+
+
 #--make plots
-def make_figure(price_buy,price_sale,demand,Cusage,P,C,Enet,Emax,Imax,Curt,L,Bnet,Bstates,Ntimes,pltshow,dirplots):
+def make_figure(price_buy, price_sale, demand, Cusage, P, C, Enet, Emax, Imax, Curt,
+                L, Bnet, Bstates, Ntimes, dirplots: Path):
     #
     eps=1e-6
     #
@@ -125,8 +147,8 @@ def make_figure(price_buy,price_sale,demand,Cusage,P,C,Enet,Emax,Imax,Curt,L,Bne
     axs[4].legend(loc='upper left',fontsize=8)
     #
     fig.tight_layout()
-    plt.savefig(dirplots+'bess_timeseries.png')
-    if pltshow: plt.show()
+    if not os.path.exists(dirplots): os.makedirs(dirplots)
+    plt.savefig(dirplots.joinpath('bess_timeseries.png'))
     plt.close()
     #
     return
