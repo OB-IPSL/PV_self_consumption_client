@@ -12,9 +12,6 @@ dependencies = [
     "pyyaml>=6.0.2",
 ]
 
-[project.scripts]
-pvsc = "pvsc"
-
 requires-python = ">=3.12"
 readme = "README.md"
 authors = [
@@ -27,6 +24,8 @@ license = {text = "CeCILL v2.1"}
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
+[project.scripts]
+pvsc = "pv_self_consumption_api.pvsc:main"
 
 [tool.pdm]
 distribution = true
