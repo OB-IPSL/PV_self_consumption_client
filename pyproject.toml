@@ -15,7 +15,7 @@ dependencies = [
 requires-python = ">=3.12"
 readme = "README.md"
 authors = [
-{name = "Sébastien Gardoll", email = "sebastien@gardoll.fr"},
+{name = "Sebastien Gardoll", email = "sebastien@gardoll.fr"},
 {name = "Olivier Boucher", email = "olivier.boucher@ipsl.fr"},
 ]
 license = {text = "CeCILL v2.1"}
