@@ -79,6 +79,8 @@ pdm pvsc -h
 
  ## Getting started
 
+Note: Add `pdm` command while in the source directory if you installed the client with pdm.
+
  ### Generate example files
 
  ```bash
