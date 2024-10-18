@@ -31,4 +31,4 @@ pvsc = "pv_self_consumption_api.pvsc:main"
 distribution = true
 
 [tool.pdm.scripts]
-server.call = "api.start_api:run_app"
+pvsc.call = "pv_self_consumption_api.pvsc:main"
