@@ -75,11 +75,11 @@ def parse_args() -> argparse.Namespace:
     
     parser_optimization = subparsers.add_parser('optimize', help='run optimisation')
     parser_optimization.add_argument('parameter_file_path', metavar='PARAMETER_FILE_PATH', type=str, help='the parameter yaml file path')
-    parser_optimization.add_argument('demand_file_path', metavar='DEMAND_FILE_PATH', type=str, help='the path to the demand csv file')
-    parser_optimization.add_argument('-m', '--make-plots', default=False, action='store_true', help='save plots')
-    parser_optimization.add_argument('-p', '--port', default=client_api.DEFAULT_API_PORT, type=int, help='specify the port number')
-    parser_optimization.add_argument('-H', '--host', default=client_api.DEFAULT_API_HOST, type=str, help='specify the API host')
-
+    parser_optimization.add_argument('demand_file_path'   , metavar='DEMAND_FILE_PATH', type=str, help='the path to the demand csv file')
+    parser_optimization.add_argument('-m', '--make-plots' , default=False, action='store_true', help='save plots')
+    parser_optimization.add_argument('-P', '--plot-file'  , default=utils.DEFAULT_PLOT_FILE_PATH, type=str, help='specify the plot file path (come with option -m)')
+    parser_optimization.add_argument('-p', '--port'       , default=client_api.DEFAULT_API_PORT, type=int, help='specify the port number')
+    parser_optimization.add_argument('-H', '--host'       , default=client_api.DEFAULT_API_HOST, type=str, help='specify the API host')
     parser_example = subparsers.add_parser('example', help='generate file examples')
     parser_example.add_argument('-p', '--parameters', default=False, action='store_true', help='generate an example of a parameter file')
     parser_example.add_argument('-d', '--demand'    , default=False, action='store_true', help='generate an example of a demand file')
@@ -111,7 +111,9 @@ def main() -> int:
                                                         host=args.host)
             print(result.model_dump_json())
             if args.make_plots:
-                utils.make_plot(parameters=parameters, result=result, demand_file_path=args.demand_file_path)
+                utils.make_plot(parameters=parameters, result=result,
+                                demand_file_path=args.demand_file_path,
+                                plot_file_path=args.plot_file)
         except Exception as e:
             print(f'[ERROR] {str(e)}', file=sys.stderr)
             return 1
