@@ -35,3 +35,7 @@ class Result(BaseModel):
     Bnet: list[float]
     Bstates: list[float]
     L: list[float]
+
+    @staticmethod
+    def get_list_class_members():
+        return vars(Result)['__annotations__'].keys()
