@@ -9,7 +9,7 @@ Olivier Boucher, CNRS, IPSL
 Interface to call API PV_self_consumption_client for optimising solar PV self-consumption under constraints.
 Note that the license only applies to this interface and not to the API.
 
-## Python environment
+## Installation
 
 ### Option 1: Conda
 
@@ -38,14 +38,21 @@ Let's create a conda environment called pvsc:
 conda create -y -n pvsc 'python=3.12.*'
 ```
 
-#### Project dependencies installation
+#### Install client
 
-First activate the environment (as usual), then install the dependencies with pip:
+First activate the environment (as usual), then install the client with pip:
 
 ```bash
 conda activate pvsc
-cd /path/to/PV_self_consumption_client/
-pip install -e .
+pip install -U pv_self_consumption_api_client
+```
+
+#### Run client
+
+In any directory:
+
+```bash
+pvsc -h
 ```
 
 ### Option 2: PDM
@@ -57,21 +64,15 @@ pip install -e .
 Setup the project environment with PDM:
 
 ```bash
-cd /path/to/PV_self_consumption_client/
+git clone https://github.com/OB-IPSL/PV_self_consumption_client.git
+cd PV_self_consumption_client
 pdm install
 ```
 
-#### Environement activation
+#### Run client
 
-Activate the associated venv:
-
-```bash
-cd /path/to/PV_self_consumption_client/
-eval $(pdm venv activate)
-```
-
-Deactivate as usual:
+While in PV_self_consumption_client directory:
 
 ```bash
-deactivate
+pdm pvsc -h 
 ```
