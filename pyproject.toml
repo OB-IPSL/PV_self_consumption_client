@@ -27,6 +27,10 @@ build-backend = "pdm.backend"
 [project.scripts]
 pvsc = "pv_self_consumption_api.pvsc:main"
 
+[project.urls]
+Repository = "https://github.com/OB-IPSL/PV_self_consumption_client"
+Documentation = "https://github.com/OB-IPSL/PV_self_consumption_client"
+
 [tool.pdm]
 distribution = true
 
