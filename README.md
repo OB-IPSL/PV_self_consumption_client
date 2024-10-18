@@ -76,3 +76,20 @@ While in PV_self_consumption_client directory:
 ```bash
 pdm pvsc -h 
 ```
+
+ ## Getting started
+
+ ### Generate example files
+
+ ```bash
+ pvsc example -p > params.yml
+ pvsc example -d > demand.csv
+ ```
+
+### Run optimization
+
+Compute optimization then output in and also generate plots (`-m` option):
+
+```bash
+pvsc optimize -m params.yml demand.csv
+```
