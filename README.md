@@ -1,13 +1,13 @@
 # PV_self_consumption_client
 
 Authors: 
-Sébastien Gardoll, CNRS, IPSL
-Olivier Boucher, CNRS, IPSL
+Sébastien Gardoll, IPSL, CNRS / Sorbonne Université
+Olivier Boucher, IPSL, CNRS / Sorbonne Université
 
 (c) 2024 
 
 Interface to call API PV_self_consumption_client for optimising solar PV self-consumption under constraints.
-Note that the license only applies to this interface and not to the API.
+Note that the license only applies to this interface and not to the API itself.
 
 ## Installation
 
@@ -77,17 +77,18 @@ While in PV_self_consumption_client directory:
 pdm pvsc -h 
 ```
 
- ## Getting started
+## Getting started
 
-Note: Add `pdm` command while in the source directory if you installed the client with pdm.
+Note: Add `pdm` command before `pvsc` while in the source directory if you installed the client with pdm (option 2).
 
- ### Generate example files
+### Generate example input files
 
- ```bash
- pvsc example -p > params.yml
- pvsc example -d > demand.csv
- ```
-
+```bash
+pvsc example -p > params.yml
+pvsc example -d > demand.csv
+```
+The example input files can be modified for your own usages.
+ 
 ### Run optimization
 
 Compute optimization then output in and also generate plots (`-m` option):
