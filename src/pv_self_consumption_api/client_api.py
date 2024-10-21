@@ -35,5 +35,7 @@ def optimize_sc(parameter_file_path: Path, demand_file_path: Path,
     with open(demand_file_path, 'rb') as demand_file:
         files = {'demand_file': demand_file}
         r = requests.post(f'http://{host}:{port}/{API_ROUTE}', data={'data': parameters.model_dump_json()}, files=files)
+        if r.status_code != requests.codes.ok:
+            r.raise_for_status()
         result = Result.model_validate_json(r.content)
-        return result, parameters
+        return result, parameters    
