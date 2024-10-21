@@ -4,6 +4,7 @@ params.yml
 .DS_Store
 pdm.lock
 plots
+.vscode
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
