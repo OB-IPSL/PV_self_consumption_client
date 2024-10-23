@@ -159,19 +159,21 @@ def make_figure(price_buy, price_sale, demand, Cusage, P, C, Enet, Emax, Imax, C
 # kwargs are ignored.
 def post_processing(Enet: NDArray, dt: float, P: NDArray, C: NDArray, Curt: NDArray, L: NDArray, **kwargs)-> dict[str, float|bool]:
     #--convert Enet into net Import and net Export (kW)
-    I = np.where(Enet<=0,Enet,0.)
+    I = np.where(Enet<=0,-Enet,0.)
     E = np.where(Enet>=0,Enet,0.)
     #
     #--compute total energies over the time period
     Prod = P.sum()*dt
     Cons = C.sum()*dt
     Export = E.sum()*dt
-    Import = -I.sum()*dt
+    Import = I.sum()*dt
     Curtail = Curt.sum()*dt
     Loss = L.sum()*dt
     #
     #--compute self-consumption rate
-    self_consumption_rate = (1+I.sum()/C.sum())*100
+    self_consumption_rate = (Cons-Import)/Prod*100
+    #--compute self-production rate
+    self_production_rate = (Cons-Import)/Cons*100
     #
     balance = Prod+Import-Cons-Export-Loss-Curtail
     is_balanced = balance < EPSILON
@@ -179,4 +181,5 @@ def post_processing(Enet: NDArray, dt: float, P: NDArray, C: NDArray, Curt: NDAr
     return {'Production': float(Prod), 'Consumption': float(Cons), 'Export': float(Export),
             'Import': float(Import), 'Loss': float(Loss), 'Curtail': float(Curtail),
             'Self_consumption_rate': float(self_consumption_rate), 
+            'Self_production_rate': float(self_production_rate), 
             'Balance': float(balance), 'Is_balanced': bool(is_balanced)}

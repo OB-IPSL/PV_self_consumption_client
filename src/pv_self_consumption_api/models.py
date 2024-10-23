@@ -48,5 +48,6 @@ class Result(BaseModel):
     Loss: float # in kWh
     Curtail: float # in kWh
     Self_consumption_rate: float # in %
+    Self_production_rate: float # in %
     Balance: float # in kWh
     Is_balanced: bool # if optimization is right or wrong
