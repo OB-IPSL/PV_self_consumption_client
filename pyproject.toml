@@ -36,3 +36,22 @@ distribution = true
 
 [tool.pdm.scripts]
 pvsc.call = "pv_self_consumption_api.pvsc:main"
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "pre-commit>=3.6.2",
+    "isort>=5.13.2",
+    "ruff>=0.5.1",
+    "mypy>=1.13.0",
+    "types-PyYAML>=6.0.12.20240917",
+    "types-requests>=2.32.0.20241016",
+]
+
+[tool.ruff]
+line-length = 180
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+ignore_missing_imports = true
