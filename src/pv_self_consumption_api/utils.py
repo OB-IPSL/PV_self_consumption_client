@@ -1,3 +1,4 @@
+import io
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -68,9 +69,13 @@ def check_compliance_inputs(supply, demand, price_sale, price_buy, Emax, Imax, B
     return
 
 
-def read_demand(demand_file_path: Path) -> pd.DataFrame:
+def read_demand(demand_file_path_or_content: Path | io.StringIO) -> pd.DataFrame:
     try:
-        demand = pd.read_csv(demand_file_path, skiprows=13, skipinitialspace=True)
+        skiprows = 13
+        if isinstance(demand_file_path_or_content, Path):
+            demand = pd.read_csv(demand_file_path_or_content, skiprows=skiprows, skipinitialspace=True)
+        else:
+            demand = pd.read_csv(demand_file_path_or_content, skiprows=skiprows, skipinitialspace=True, skip_blank_lines=True)
         demand.set_index("usage", inplace=True)
         return demand
     except Exception as e:
