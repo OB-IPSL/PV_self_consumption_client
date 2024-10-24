@@ -87,7 +87,8 @@ Note: Add `pdm` command before `pvsc` while in the source directory if you insta
 pvsc example -p > params.yml
 pvsc example -d > demand.csv
 ```
-The example input files can be modified for your own usages.
+These commands will generate input files can be modified for your own usages.
+The input files include a description of the input parameters and input demand data.
  
 ### Run optimization
 
