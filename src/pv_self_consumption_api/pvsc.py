@@ -22,9 +22,9 @@ Nscen: 1000
 price_sale: 0.06
 #--buy price for electricity imported from the grid (€/kWh)
 price_buy: 0.20
-#--maximum export (kW)
+#--maximum export power (kW)
 Emax: 5                    
-#--maximum import (kW)
+#--maximum import power (kW)
 Imax: 8                    
 #--max battery storage (kWh)
 Bmax: 10.0                 
@@ -39,7 +39,7 @@ B0f: 0.5
 #--battery discretisation step (kWh)
 dB: 0.1                    
 #
-#--forecast of the production for the next Ntimes times by timestep (kW)
+#--forecast of the production for the next Ntimes timesteps (kW)
 #-----------------------------------------------------------------------
 supply: [0., 0., 0., 0., 0., 0., 0., 3., 8., 10., 14., 16., 4., 4., 10., 8., 3., 0., 0., 0., 0., 0., 0., 0.]
 """
@@ -47,15 +47,16 @@ supply: [0., 0., 0., 0., 0., 0., 0., 3., 8., 10., 14., 16., 4., 4., 10., 8., 3.,
 DEMAND_EXAMPLE =\
 """\
 #--input file to parametrize the flexibility in the demand
-#--all numbers are integers
+#--Note that all numbers (L, P, E, Pmax, i1, i2) are integers
 #
 #--usage: name of usage 
-#--uniform: boolean that determines if usage requires a uniform power or not
+#--uniform: boolean that determines if usage requires a uniform power (True) or if the power can vary in time (False)
 #--intermittent: boolean that determines if usage can be intermittent (stopped and restarted) or not
-#--L: length, number of timesteps usage is required, for uniform power usages only
-#--P: power of usage, in kW, for uniform power usages only
-#--E: total energy required for non-uniform usages only, in kW.timestep (ie not multiplied by the duration of the timestep)
-#--Pmax: maximum power of usage for non-uniform usages only, in kW
+#--L: length of usage, number of timesteps for which usage is required, for uniform power usages only, otherwise 0
+#--P: power of usage (in kW) for uniform power usages only, otherwise 0
+#--E: total energy (in kW.timestep) required for non-uniform usages only, otherwise 0
+#--note that E is not multiplied by the duration of the timestep as the unit is kW.timestep
+#--Pmax: maximum power of usage (in kW), for non-uniform usages only, otherwise 0
 #--i1: index of start of time window for usage (i1 included)
 #--i2: index of end of time window for usage (i2 not included)
 usage,   uniform,  intermittent, L,  P,  E,   Pmax,  i1,  i2
