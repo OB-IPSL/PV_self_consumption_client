@@ -7,7 +7,7 @@ import pv_self_consumption_api.utils as utils
 from pv_self_consumption_api.models import Parameters, Result
 
 DEFAULT_API_HOST = "voc-dev.ipsl.fr"
-DEFAULT_API_PORT = 9999
+DEFAULT_API_PORT = 8080
 API_ROUTE = "api/pv_self_consumption/optimisesc"
 
 
