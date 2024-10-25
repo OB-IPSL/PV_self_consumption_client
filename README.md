@@ -1,10 +1,10 @@
 # PV_self_consumption_client
 
-Authors: 
+Authors:
 Sébastien Gardoll, IPSL, CNRS / Sorbonne Université
 Olivier Boucher, IPSL, CNRS / Sorbonne Université
 
-(c) 2024 
+(c) 2024
 
 Interface to call API PV_self_consumption_client for optimising solar PV self-consumption under constraints.
 Note that the license only applies to this interface and not to the API itself.
@@ -57,7 +57,7 @@ pvsc -h
 
 ### Option 2: PDM
 
-[PDM](https://pdm-project.org/en/latest/) associates a Python virtual environmnent (venv) with a project described by a pyproject file. 
+[PDM](https://pdm-project.org/en/latest/) associates a Python virtual environmnent (venv) with a project described by a pyproject file.
 
 #### Dependencies installation
 
@@ -74,7 +74,7 @@ pdm install
 While in PV_self_consumption_client directory:
 
 ```bash
-pdm pvsc -h 
+pdm pvsc -h
 ```
 
 ## Getting started
@@ -87,9 +87,8 @@ Note: Add `pdm` command before `pvsc` while in the source directory if you insta
 pvsc example -p > params.yml
 pvsc example -d > demand.csv
 ```
-These commands will generate input files can be modified for your own usages.
-The input files include a description of the input parameters and input demand data.
- 
+The example input files can be modified for your own usages.
+
 ### Run optimization
 
 Compute optimization then output in and also generate plots (`-m` option):
@@ -97,3 +96,18 @@ Compute optimization then output in and also generate plots (`-m` option):
 ```bash
 pvsc optimize -m params.yml demand.csv
 ```
+
+## How to contribute
+
+### Install linters
+
+You must follow the pdm install instructions. Then:
+
+```bash
+pdm install -dG dev
+pdm run pre-commit install
+```
+
+### Submit pull request
+
+Contribution is possible thank to the PR submission.
