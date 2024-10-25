@@ -23,21 +23,21 @@ price_sale: 0.06
 #--buy price for electricity imported from the grid (€/kWh)
 price_buy: 0.20
 #--maximum export power (kW)
-Emax: 5                    
+Emax: 5.0
 #--maximum import power (kW)
-Imax: 8                    
+Imax: 8.0
 #--max battery storage (kWh)
-Bmax: 10.0                 
+Bmax: 10.0
 #--timescale of battery charge (hr)
-ts_in: 5.0                 
+ts_in: 5.0
 #--timescale of battery discharge (hr)
-ts_out: 5.0                
+ts_out: 5.0
 #--efficiency of battery charge-discharge cycle (unitless)
-Beff: 0.8                  
+Beff: 0.8
 #--battery initial state (unitless, fraction of Bmax)
-B0f: 0.5                   
+B0f: 0.5
 #--battery discretisation step (kWh)
-dB: 0.1                    
+dB: 0.1
 #
 #--forecast of the production for the next Ntimes timesteps (kW)
 #-----------------------------------------------------------------------
