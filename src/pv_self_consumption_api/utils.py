@@ -9,6 +9,7 @@ from numpy.typing import NDArray
 from pv_self_consumption_api.models import Parameters, Result
 
 DEFAULT_PLOT_FILE_PATH = Path("bess_timeseries.png")
+CSV_COMMENT_CHAR = "#"
 EPSILON = 1.0e-6
 
 
@@ -71,11 +72,7 @@ def check_compliance_inputs(supply, demand, price_sale, price_buy, Emax, Imax, B
 
 def read_demand(demand_file_path_or_content: Path | io.StringIO) -> pd.DataFrame:
     try:
-        skiprows = 13
-        if isinstance(demand_file_path_or_content, Path):
-            demand = pd.read_csv(demand_file_path_or_content, skiprows=skiprows, skipinitialspace=True)
-        else:
-            demand = pd.read_csv(demand_file_path_or_content, skiprows=skiprows, skipinitialspace=True, skip_blank_lines=True)
+        demand = pd.read_csv(demand_file_path_or_content, comment=CSV_COMMENT_CHAR, skipinitialspace=True, skip_blank_lines=True)
         demand.set_index("usage", inplace=True)
         return demand
     except Exception as e:
