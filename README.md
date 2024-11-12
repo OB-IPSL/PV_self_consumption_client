@@ -1,8 +1,8 @@
 # PV_self_consumption_client
 
-Authors:
-Sébastien Gardoll, IPSL, CNRS / Sorbonne Université
-Olivier Boucher, IPSL, CNRS / Sorbonne Université
+## Authors:
+- Sébastien Gardoll, IPSL, CNRS / Sorbonne Université
+- Olivier Boucher, IPSL, CNRS / Sorbonne Université
 
 (c) 2024
 
